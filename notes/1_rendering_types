@@ -1,0 +1,51 @@
+=================================================
+RENDERING APPROACHES
+=================================================
+
+traditional:
+
+C =req=> S
+  <=res= ---- has HTML + CSS + JS files
+C on receiing those renders the HTML, applies CS and injects JS
+pros: initial content available
+cons: reqs need to be made for every page
+
+__________________________________________________________
+react:
+
+C gets a minimal HTML file and a bundled big JS file, which it runs on the HTML file
+pros: SPA, no need to make reqs for every page, reduces bandwidth need
+cons: no initial content as everything is rendered dynamically
+
+__________________________________________________________
+nextjs:
+SSR
+C -----------req--------------> S, S has react code which it executes to get HTML,CSS,JS, it combines these3
+         into a final HTML finished page (post data fetching etc etc) and sends THAT
+
+C gets THAT finished HTML page, but to add user interaction related JS the server sends another JS file
+to the C.  When C gets that it applies that on the HTML page. THis is called hydration
+
+lets say these are our components
+[C1|C2]
+[  C3 ]
+
+c1 = form, 
+c2 = span
+c3 = div
+<!-- ----------------------------------------------------------------------- -->
+
+after hydration if the page rendered at the client side does not match what the server rendered at the server side,
+in terms of the placeholders for the comps (ie c1 is <form>, c2 is <span> etc), this is called a hydration error
+
+QUES: why is this even an error? =
+posbl ans: maybe because the sent JS should've only been resp for user interaction related stuff like event
+listeners, and all the rendering shouldve been performed on the server side, and so if the hydration is causing
+more rendering it's bad??
+
+
+but ok, even if thats the case, what are the practical implications?
+is it that the JS file sent for hydration attaches event handlers to things, so it needs to know what all the 
+rendered stuff on the page is?
+and if what it knows (by virtue of being written on the server with the rest of the rendering logic) is diff
+from what is actually rendered, it can be be rendered useless
