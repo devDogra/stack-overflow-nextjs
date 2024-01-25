@@ -1,0 +1,24 @@
+1. components -> smaller reusable comps like forms, cards, etc
+2. constants -> self expln, also for link info [ { title: "Home", route: "/home" }] etc.
+3. app -> everything happens here, especially the routing
+4. context -> themeprovider (for dark/light mode), etc.
+5. lib (library)
+    5.1 actions -> interaction with the backend
+    nextjs apps by default fullstk, so both FE n backendcode
+    not completely seperate
+    connection bw the FE n BE will be in actions
+6. database -> db setup (models etc.)
+7. public -> assets
+8. styles -> css 
+9. types -> TS types
+10. .env.local -> local env vars 
+This separation makes it easier to manage different configurations for various environments (such as development, testing, and production)
+
+
+.env -> default, baseline
+.env.local -> can override .env vals; for local development; developers use it to set values specific to their setup 
+
+eg: .env => DB_URL=mongodb://<serverProdUrl>:27017/db 
+.env.local=>DB_URL=mongodb://localhost:27017/db
+
+https://12factor.net/config
