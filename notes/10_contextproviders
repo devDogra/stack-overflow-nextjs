@@ -1,0 +1,78 @@
+usually I create context, export it and then use it in layout.tsx
+
+
+app/layout.tsx🧮 
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const [mode, setMode] = useState("light");
+  return (
+      <ThemeContext.Provider
+        value={{
+          mode,
+          setMode,
+        }}
+      >
+        <html lang="en">
+            <body>
+            {children}
+            </body>
+        </html>
+      </ThemeContext.Provider>
+  );
+}
+
+and we're using useState to create a state variable for mode (light | dark), so we can change the mode
+
+we're passing the changer and the state via context
+
+but cant use useState in layout.tsx because its gonna be server side rendered
+
+
+so what should we do?
+
+
+We should make a seperate <ThemeProvider> </ThemeProvider>
+component and declare the state and all the shit in it. we can mark it as use client so it works.
+then we can import it into our layout.tsx, and then use it
+
+
+that'll be like 
+
+
+layout.tsx::::: ==> 
+import ClientComp from 'cc' (our provider)
+
+function ServerComp({children}) { (our layout)
+    return (
+        <html>
+            <body>
+                <ClientComp(provider)>
+                    {children}
+                <ClientComp(provider)>
+            </body>
+        </html>
+    );
+}
+
+
+which is fine cuz the client ServerComp will be rendered on the server as much as it can be, and the 
+portion of it that is marked as 'use client' (clientcompprovider) will be rendered on the client
+
+
+OK, so
+we need to make a client comp that is a Provider, cant directly use <Context.Provider value={{}}></Context.Provider>
+
+
+but to consume the context, we can't do it on a page level. 
+
+i.e, cant consume contexts directly on pages (app/layout.tsx or app/route/page.tsx)
+
+because they're server side rendered
+
+but CAN do it in individual components,
+so what we can do is if we wanna consume a context, make a seperate client comp for it,
+then use the context in that CC, and use the CC in our page

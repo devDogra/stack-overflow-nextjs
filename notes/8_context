@@ -1,0 +1,12 @@
+why is react context not supported in server components?
+
+idk
+
+might req browser features
+
+
+context needs state
+state needs client
+
+my guess is that server comps are basically rendered on the server (i.e final HTML prepared, then JS file sent for hydration/adding user interactivity)
+there's no place to hold "state" in this whole process anywhere. there's only html, and event handlers etc. 

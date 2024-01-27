@@ -1,0 +1,88 @@
+https://www.youtube.com/watch?v=c8Q_Kp_lDng
+
+
+if we import server comps (scs) inside client comps (marked by 'use client') and use
+em, the scs will be treated as client comps cuz of the network boundary
+
+
+how can we then use scs inside ccs? for eg: ccs can have context providers, and we might need to use
+that context in scs. 
+
+ans: use the children prop
+
+if cc2 accepts children props 
+
+
+    <ClientComp2>
+        {children}
+    </ClientComp2>
+
+
+function ClientComp2({children}) {
+    return (
+        <div>
+            {children}
+        </div>
+    );
+}
+
+
+we can pass scs to it
+
+<ClientComp2>
+    <ServerComp></ServerComp>
+</ClientComp2>
+
+
+cuz react doesnt need to know what goes inside a slot when using children props
+nextjs will render the servercomp before the clientcomp2, and then put the rendered SC
+inside its "slot"
+
+
+
+*****SO can use SCs inside CCs if pass SCs as children props, but if directly import and use it
+they'll be treated as client too*****
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!--                             CCs inside SCs                              -->
+<!-- ----------------------------------------------------------------------- -->
+
+can do this. SCs will be rendered on the server as much as possible, and the client components
+will remain unrendered and sent as a client module to the JS, and then rendered there?
+
+
+SC:
+<> 
+ <sc1></sc1>
+ <sc2></sc2>
+ <cc2></cc2> // rendered on the client
+</>
+
+/* -----------------------------------------WRONG --------------------------- */
+function Client() {
+  return (
+    <Server></Server>
+  );
+}
+
+App.jsx: 
+<Client></Client>
+
+/* -------------------------------RIGHT-------------------------------------- */
+
+function Client({children}) {
+  return (
+    <>
+      {children}
+    </>
+  )
+}
+
+APp.jx: 
+<Client>
+  <Server></Server>
+</Client>
+
+/* -------------------------------------------------------------------------- */
