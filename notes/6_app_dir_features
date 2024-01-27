@@ -1,0 +1,4 @@
+comp level rendering (ssr or csr)
+by default ssr everything
+
+before only pages could be ssr'd or csr'd, now comps can be

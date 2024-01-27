@@ -1,0 +1,12 @@
+server comps => rendered completely on the server 
+client comps => rendered MOSTLY on the client 
+
+
+but prerendering is also performed, which means nextjs
+renders whatever it can on the server without compromising functoonality,
+to ensure a smoother experience and better SEO etc etc.
+
+
+so even in client comps, if someting can be prerendered without it negativly affecting anything, it will be 
+
+

@@ -1,0 +1,12 @@
+react code --------bundled, dependency resolved, optimised, minified, made ready for production, turned into | HTML | CSS |  JS  |static files ----------------> prod build 
+
+^^ is build time
+
+
+prod build--------executed---------> running app
+
+^^ is runtime
+
+now, in SSR the server also executes the final bundled code to get the rendered finished page, so run time happens on the server 
+
+in CSR, the final bundled code is sent to the client, and the client executes it, so run time happens on the client; 

@@ -1,0 +1,55 @@
+user interaction = csr why? csr happens on the browser usr interaction requires
+DOM nodes there are no DOM nodes on the server cant do btn.addEventListener or
+<button onClick etc></button>
+
+same w localStorage useEffect => fetch data => already on server so no need to
+do fucking fetch(), just inject it directly while SSRing => localstorage => no
+LS on the server also, wanting to use useState useEFfect etc hooks = csr why?
+
+https://stackoverflow.com/questions/67293649/how-to-use-hook-in-server-side-render-on-next-js
+
+why do we use useState?
+to make variables that react keeps track of, so that it can rerender the DOM (comp) whenever that variable changes. it wouldnt know if  regular variable has changed 
+
+if we're on the server, the only thing that happens is that the server 
+generates/renders a complete page for us and then sends it. rerender on var change is no concept on the server side because that happens on the client side 
+
+rerendering a comp == updating the DOM  
+
+
+hooks only work in a browser env 
+for eg: useState rerenders dom nodes belonging to a comp whenever a state var changes, useEFfect fetches data from the server or interacts with localstorage etcetc.    
+
+so cant use em while in SSRing
+
+
+if u want that a comp should be rerender when a variable changes, u 
+want CSR 
+
+user interactivity = client side 
+else = server side 
+
+
+SSR also faster cuz no need for 2 reqs (HTML + fetch data), serber direct🧳 injects data into the html
+
+
+nextjs while doing SSR executes the react code ====toget===> html + css + js 
+which it then executes ===toget===> final HTML file 
+
+cant execute the code if the code requires something browser specific! (like component lifecycle methods)
+
+
+
+
+
+[server on which the frontend is hosted] = FES 
+
+
+[usr]
+ ||
+ || req, get back frontend files. if SSR'd, then finished html pages. if not then minimalhtml+bundledJS 
+ VV
+[server]-->-- 
+   ^        | fetch data from itself (server)
+   |        |
+   -----<---+
