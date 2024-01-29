@@ -35,10 +35,7 @@ export default function RootLayout({
         <body
           className={`${inter.variable} ${spaceGrotesk.variable} border-2 bg-slate-50 dark:bg-slate-400`}
         >
-          <ThemeProvider>
-            <h1>hello</h1>
-            {children}
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
