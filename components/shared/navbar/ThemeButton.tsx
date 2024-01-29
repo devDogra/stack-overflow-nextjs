@@ -18,12 +18,17 @@ export default function ThemeButton() {
   return (
     <Menubar>
       <MenubarMenu>
-        <MenubarTrigger>Theme</MenubarTrigger>
+        <MenubarTrigger className="text-black dark:text-white">
+          Theme
+        </MenubarTrigger>
 
-        <MenubarContent>
-          <MenubarItem>{`MODE: ${mode}`}</MenubarItem>
+        <MenubarContent className="bg-light-900 dark:bg-dark-200">
           {themes.map((theme) => (
-            <MenubarItem key={theme.value} onClick={() => setMode(theme.value)}>
+            <MenubarItem
+              key={theme.value}
+              onClick={() => setMode(theme.value)}
+              className="flex-between flex justify-between"
+            >
               <Image
                 src={theme.icon}
                 alt={theme.value}
