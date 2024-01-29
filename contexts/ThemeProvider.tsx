@@ -15,16 +15,13 @@ export default function ThemeProvider({
     console.log("changing");
   });
 
-  const lstheme = localStorage.getItem("theme");
-
-  const def = lstheme || (colorScheme.matches ? "dark" : "light") || "light";
-
-  const [mode, setMode] = useState(def);
-
-  console.log({ mode, colorScheme: colorScheme.matches, def, lstheme });
+  const [mode, setMode] = useState(
+    localStorage.getItem("theme") ||
+      (colorScheme.matches ? "dark" : "light") ||
+      "light"
+  );
 
   function handleThemeChange() {
-    console.log("mode is = ", mode);
     localStorage.setItem("theme", mode);
 
     const prefersDark = colorScheme.matches;
