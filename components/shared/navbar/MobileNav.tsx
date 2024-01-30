@@ -12,6 +12,43 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { sidebarLinks } from "@/constants";
+
+function MobileNavLink({
+  className,
+  href,
+  children,
+}: {
+  className: string;
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <SheetClose asChild>
+      <Link href={href}>
+        <Button className={className}>{children}</Button>
+      </Link>
+    </SheetClose>
+  );
+}
+
+function MobileNavMainLinks() {
+  return (
+    <section className="flex flex-col w-full gap-2 mt-6">
+      {sidebarLinks.map((item) => (
+        <MobileNavLink
+          href={item.route}
+          className="btn-primary w-full rounded p-2 flex flex-row gap-2 dark:text-white dark:hover:bg-cyan-500 hover:bg-slate-400 text-black border-slate-400 border"
+          key={item.route}
+        >
+          {/* <Image src={item.imgURL} alt={item.label} height={20} width={20} /> */}
+          {/* <span>{item.label}</span> */}
+          {item.label}
+        </MobileNavLink>
+      ))}
+    </section>
+  );
+}
 
 export default function MobileNav() {
   return (
@@ -44,24 +81,25 @@ export default function MobileNav() {
         <SignedOut>
           {/* Login and Sign up Buttons Start */}
           <div className="mt-4 flex flex-col gap-2">
-            <SheetClose asChild>
-              <Link href="/sign-in">
-                <Button className="btn-secondary w-full rounded border p-2 text-primary-500 shadow-primary-500 hover:border-primary-500">
-                  Login
-                </Button>
-              </Link>
-            </SheetClose>
+            <MobileNavLink
+              href="/sign-in"
+              className="btn-secondary w-full rounded border p-2 text-primary-500 shadow-primary-500 hover:border-primary-500"
+            >
+              Login
+            </MobileNavLink>
 
-            <SheetClose asChild>
-              <Link href="/sign-up">
-                <Button className="btn-tertiary w-full rounded p-2 text-black ring-1 ring-slate-600 hover:ring-white dark:text-white dark:ring-cyan-200">
-                  Register
-                </Button>
-              </Link>
-            </SheetClose>
+            <MobileNavLink
+              href="/sign-up"
+              className="btn-secondary w-full rounded p-2 text-black ring-1 ring-slate-600 hover:ring-white dark:text-white dark:ring-cyan-200"
+            >
+              Register
+            </MobileNavLink>
+
             {/* Login and Sign up Buttons End */}
           </div>
         </SignedOut>
+
+        <MobileNavMainLinks />
       </SheetContent>
     </Sheet>
   );
