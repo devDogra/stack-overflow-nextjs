@@ -18,15 +18,22 @@ function MobileNavLink({
   className,
   href,
   children,
+  iconSrc = "",
 }: {
   className: string;
   href: string;
   children: React.ReactNode;
+  iconSrc?: string;
 }) {
   return (
     <SheetClose asChild>
       <Link href={href}>
-        <Button className={className}>{children}</Button>
+        <Button className={className}>
+          {iconSrc && (
+            <Image src={iconSrc} alt={`${href}-icon`} width={20} height={20} />
+          )}
+          {children}
+        </Button>
       </Link>
     </SheetClose>
   );
@@ -40,6 +47,7 @@ function MobileNavMainLinks() {
           href={item.route}
           className="btn-primary w-full rounded p-2 flex flex-row gap-2 dark:text-white dark:hover:bg-cyan-500 hover:bg-slate-400 text-black border-slate-400 border"
           key={item.route}
+          iconSrc={item.imgURL}
         >
           {/* <Image src={item.imgURL} alt={item.label} height={20} width={20} /> */}
           {/* <span>{item.label}</span> */}
@@ -63,7 +71,10 @@ export default function MobileNav() {
         />
       </SheetTrigger>
 
-      <SheetContent side={"left"} className="bg-light-700 dark:bg-dark-400">
+      <SheetContent
+        side={"left"}
+        className="bg-light-700 dark:bg-dark-400 overflow-x-scroll"
+      >
         {/* Mobile Nav Heading Starts */}
         <Link href="/" className="flex items-center gap-1">
           <Image
