@@ -6,9 +6,10 @@ export default function ThemeConsumer() {
   const { mode, toggleMode } = useContext(ThemeContext);
 
   return (
-    <div className="border-2 bg-slate-50 dark:bg-slate-500">
-      {`MODE: ${mode} `}
-      <button onClick={toggleMode}>Toggle Mode</button>
-    </div>
+    // <div className="border-2 bg-slate-50 dark:bg-slate-500">
+    //   {`MODE: ${mode} `}
+    //   <button onClick={toggleMode}>Toggle Mode</button>
+    // </div>
+    <></>
   );
 }

@@ -33,7 +33,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${inter.variable} ${spaceGrotesk.variable} border-2 bg-slate-50 dark:bg-slate-400`}
+          className={`${inter.variable} ${spaceGrotesk.variable} bg-slate-50 dark:bg-slate-400`}
         >
           <ThemeProvider>{children}</ThemeProvider>
         </body>

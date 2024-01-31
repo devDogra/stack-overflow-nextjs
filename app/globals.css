@@ -4,6 +4,12 @@
 
 @import url("../styles/theme.css");
 
+* {
+  /* outline: 1px solid black; */
+}
+nav {
+  opacity: 0.5;
+}
 body {
   font-family: "Inter", sans-serif;
 }

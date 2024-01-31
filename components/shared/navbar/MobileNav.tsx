@@ -14,7 +14,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { sidebarLinks } from "@/constants";
 
-function MobileNavLink({
+export function MobileNavLink({
   className,
   href,
   children,
@@ -39,7 +39,7 @@ function MobileNavLink({
   );
 }
 
-function MobileNavMainLinks() {
+export function MobileNavMainLinks() {
   return (
     <section className="flex flex-col w-full gap-2 mt-6">
       {sidebarLinks.map((item) => (
@@ -49,8 +49,6 @@ function MobileNavMainLinks() {
           key={item.route}
           iconSrc={item.imgURL}
         >
-          {/* <Image src={item.imgURL} alt={item.label} height={20} width={20} /> */}
-          {/* <span>{item.label}</span> */}
           {item.label}
         </MobileNavLink>
       ))}
