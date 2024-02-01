@@ -26,31 +26,31 @@ export function MobileNavLink({
   iconSrc?: string;
 }) {
   return (
-    <SheetClose asChild>
-      <Link href={href}>
-        <Button className={className}>
-          {iconSrc && (
-            <Image src={iconSrc} alt={`${href}-icon`} width={20} height={20} />
-          )}
-          {children}
-        </Button>
-      </Link>
-    </SheetClose>
+    <Link href={href}>
+      <Button className={className}>
+        {iconSrc && (
+          <Image src={iconSrc} alt={`${href}-icon`} width={20} height={20} />
+        )}
+        {children}
+      </Button>
+    </Link>
   );
 }
 
 export function MobileNavMainLinks() {
   return (
-    <section className="flex flex-col w-full gap-2 mt-6">
+    <section className="flex flex-col w-full gap-5 mt-6">
       {sidebarLinks.map((item) => (
-        <MobileNavLink
-          href={item.route}
-          className="btn-primary w-full rounded p-2 flex flex-row gap-2 dark:text-white dark:hover:bg-cyan-500 hover:bg-slate-400 text-black border-slate-400 border"
-          key={item.route}
-          iconSrc={item.imgURL}
-        >
-          {item.label}
-        </MobileNavLink>
+        <SheetClose asChild>
+          <MobileNavLink
+            href={item.route}
+            className="btn-primary w-full rounded flex flex-row gap-2 dark:text-white dark:hover:bg-cyan-500 hover:bg-slate-400 text-black border-slate-400 border p-4"
+            key={item.route}
+            iconSrc={item.imgURL}
+          >
+            <span className="base-bold">{item.label}</span>
+          </MobileNavLink>
+        </SheetClose>
       ))}
     </section>
   );

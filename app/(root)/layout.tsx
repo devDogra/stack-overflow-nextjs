@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Navbar></Navbar>
 
       <div className="flex bg-yellow-300 ">
-        <section className="min-h-screen items-center justify-center bg-pink-400 pt-32 fixed left-0 w-64">
+        <section className="min-h-screen bg-light-900 dark:bg-dark-400 pt-32 p-4 sticky left-0 w-64 overflow-y-auto max-w flex flex-col  gap-4 h-screen custom-scrollbar">
           <LeftSidebar />
         </section>
 
