@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 
 export default function GlobalSearch() {
   return (
-    <div className="flex flex-row gap-2 justify-between items-stretch dark:bg-slate-800 bg-slate-300 rounded-md max-lg:hidden w-full max-w-[600px] px-3">
+    <div className="flex flex-row gap-2 justify-between items-stretch dark:bg-slate-800 bg-slate-300 rounded-md grow max-lg:hidden  max-w-[600px] px-3">
       <Image
         src="/assets/icons/search.svg"
         alt="global-search-icon"

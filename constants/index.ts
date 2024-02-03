@@ -1,5 +1,7 @@
 // src automaically resolved from /public in Images
 import { SidebarLink } from "@/types";
+import { get } from "http";
+import { only } from "node:test";
 
 export const themes = [
   { value: "light", label: "Light", icon: "/assets/icons/sun.svg" },
@@ -72,3 +74,25 @@ export const BADGE_CRITERIA = {
     GOLD: 100000,
   },
 };
+
+export const RightSidebarQuestions = [
+  {
+    title:
+      "Best practices for data fetching in a Next.js application with Server-Side Rendering (SSR)?",
+    route: "/",
+  },
+  {
+    title: "Is it just me or is the font bolder than necessary?",
+    route: "/",
+  },
+  {
+    title: "Can I get the course for free?",
+    route: "/",
+  },
+  {
+    title: "Your wife is in me DMs",
+    route: "/",
+  },
+];
+
+export const RightSidebarTags = ["Next.js", "React", "CSS", "Test", "Next JS"];

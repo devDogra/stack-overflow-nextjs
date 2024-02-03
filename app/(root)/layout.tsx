@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/shared/navbar/Navbar";
 import LeftSidebar from "@/components/shared/leftsidebar/LeftSidebar";
+import RightSidebar from "@/components/shared/rightsidebar/RightSidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,8 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div>{children}</div>
         </section>
 
-        <section className="min-h-screen items-center justify-center bg-green-300 pt-32 fixed right-0 w-[22rem]">
-          <div>Right Sidebar</div>
+        <section className=" bg-light-900 dark:bg-dark-400 h-screen  pt-32 fixed right-0 w-[22rem] max-xl:hidden p-6 overflow-y-auto custom-scrollbar">
+          <RightSidebar />
         </section>
       </div>
     </main>
